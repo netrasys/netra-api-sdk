@@ -9,7 +9,7 @@ npm install netra-api-sdk
 
 >Usage
 ```
-var ids = require('./app').ImageDetectionService
+var ids = require('netra-api-sdk').ImageDetectionService
 
 var config = {
 	apiKey: 'abc123',
