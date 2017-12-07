@@ -1,4 +1,5 @@
-# netra-api-sdk
+# netra-api-sdk-js
+
 The official SDK for Netra's API
 
 >Install
