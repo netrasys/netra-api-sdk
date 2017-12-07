@@ -9,7 +9,7 @@ npm install netra-api-sdk
 ```
 
 ## Usage
-```
+```javascript
 var ids = require('netra-api-sdk').ImageDetectionService
 
 var config = {
