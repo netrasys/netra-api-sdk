@@ -35,4 +35,4 @@ If you encounter a bug with the SDK we would like to hear about it. Search the e
 
 For more details please check out our documentation:
 
-[https://netrasys.github.io/netra-api-sdk](https://netrasys.github.io/netra-api-sdk)
+[https://netrasys.github.io/netra-api-sdk-js](https://netrasys.github.io/netra-api-sdk-js)
