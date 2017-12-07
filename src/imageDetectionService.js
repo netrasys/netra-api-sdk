@@ -12,7 +12,6 @@ const constants = require('./lib/constants');
  * @param {object} config
  * @property {string} config.defaultCallbackUrl - Address of where callbacks will be returned to, can be overridden in processImage.
  * @property {string=} config.apiKey - Can be obtained from https://dev.getnetra.com. Can be set as an environment variable NETRA_API_KEY.
- * @throws {Error} - 
  * @example
 var ids = require('./app').ImageDetectionService
 
