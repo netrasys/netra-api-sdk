@@ -1,0 +1,22 @@
+{
+  "name": "netra-api-sdk",
+  "version": "1.0.0",
+  "description": "The official SDK for Netra's API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "netra",
+    "sdk"
+  ],
+  "author": "Dominic Cabral",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^1.7.3",
+    "query-string": "^5.0.1"
+  },
+  "devDependencies": {
+  }
+}
