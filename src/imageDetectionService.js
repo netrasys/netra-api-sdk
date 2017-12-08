@@ -76,7 +76,7 @@ class ImageDetectionService extends AsyncApiBase{
 		 * Returns object of valid endpoints for the ImageDetectionService route. i.e. client.endpoints.BRANDS
 		 * @returns {object}
 		 */
-		static get validEndpoints(){
+		get validEndpoints(){
 			return constants.imageDetectionService.endpoints;
 		}
 
