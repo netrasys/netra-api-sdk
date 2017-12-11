@@ -21,7 +21,7 @@ var client = new ids(config)
 
 var image_url = 'https://foo.com/image.jpeg'
 
-client.processImage(image_url, ids.validEndpoints.BRANDS)
+client.processImage(image_url, client.validEndpoints.BRANDS)
 .then(data => console.log(data))
 .catch(error => console.log(error))
 

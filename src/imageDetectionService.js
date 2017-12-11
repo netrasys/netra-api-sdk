@@ -29,7 +29,7 @@ class ImageDetectionService extends AsyncApiBase{
 			assert(config.defaultCallbackUrl,'defaultCallbackUrl required')			
 			super(config.apiKey)
 			this.defaultCallbackUrl = config.defaultCallbackUrl;
-			this.apiUrl = constants.baseUrl + constants.imageDetectionService.route
+			this.apiUrl = constants.baseUrl + (process.env.CUSTOM_SERVICE_ROUTE || constants.imageDetectionService.route)
 		}
 
 		/**
