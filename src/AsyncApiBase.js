@@ -1,6 +1,8 @@
 'use strict'
 
 const fetch = require("node-fetch");
+const http = require('http');
+const pool = new http.Agent({ maxSockets: 100 });
 
 class AsyncApiBase {
 	constructor(apiKey){
@@ -17,7 +19,8 @@ class AsyncApiBase {
 						'Ocp-Apim-Subscription-Key': this.apiKey,
 						'Content-Type':'application/json'
 					},
-					body:JSON.stringify(body)
+					body:JSON.stringify(body),
+					agent: pool
 				});
 			const json = await response.json();
 		
