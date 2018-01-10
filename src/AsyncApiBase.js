@@ -1,8 +1,8 @@
 'use strict'
 
 const fetch = require("node-fetch");
-const http = require('http');
-const pool = new http.Agent({ maxSockets: 100 });
+const https = require('https');
+const pool = new https.Agent({ maxSockets: 100 });
 
 class AsyncApiBase {
 	constructor(apiKey){
