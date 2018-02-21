@@ -26,7 +26,7 @@ class ImageDetectionService extends AsyncApiBase{
 		constructor(config) {
 			let apiKey = config.apiKey || process.env.NETRA_API_KEY;
 			assert(apiKey,'apiKey required. Set in config object or env variable NETRA_API_KEY')
-			assert(config.defaultCallbackUrl,'defaultCallbackUrl required')			
+			assert(config.defaultCallbackUrl,'defaultCallbackUrl required')
 			super(config.apiKey)
 			this.defaultCallbackUrl = config.defaultCallbackUrl;
 			this.apiUrl = constants.baseUrl + (process.env.CUSTOM_SERVICE_ROUTE || constants.imageDetectionService.route)
@@ -37,18 +37,22 @@ class ImageDetectionService extends AsyncApiBase{
 		 * @param {string} image_url - a valid url of a public image
 		 * @param {string} endpoint - classification model type. Object from ImageDetectionService.endpoints
 		 * @param {string=} callback_url - callback url, will override ImageDetectionService.defaultCallbackUrl
+		 * @param {object=} threshold - detection threshold, an integer between 0 and 100, if not specified the default for the model type will be used
 		 * @param {object=} query_params - data that will be appended to the query params of the callback url
 		 * @param {object=} metadata - data that will be added to a property called "metadata" in the callback JSON
 		 * @returns {promise}
-		 * @example 
+		 * @example
 		 * client.processImage(image_url, ids.validEndpoints.BRANDS)
 		 * .then(data => console.log(data))
 		 * .catch(error => console.log(error))
 		 */
-		async processImage(image_url, endpoint, callback_url=this.defaultCallbackUrl, query_params={}, metadata={}) {
+		async processImage(image_url, endpoint, callback_url=this.defaultCallbackUrl, threshold=null, query_params={}, metadata={}) {
 			try {
 				assert(image_url)
 				assert(endpoint)
+				assert(threshold === null || (typeof(threshold) === 'number' && parseInt(threshold) === threshold),
+					'threshold must be an integer or absent');
+				assert(threshold === null || (threshold >= 0 && threshold <= 100), 'threshold must be between 0 and 100');
 				assert.deepEqual(typeof(metadata),'object','metadata must be of type object');
 				assert.deepEqual(typeof(query_params),'object','query_params must be of type object')
 				assert.deepEqual(typeof(callback_url),'string','callback_url must be of type string')
@@ -63,6 +67,9 @@ class ImageDetectionService extends AsyncApiBase{
 						'image_url': image_url,
 						'metadata': metadata
 					}
+					if (threshold !== null)
+						body['threshold'] = threshold;
+
 					return await super.makeRequest(url,body)
 				}else{
 					throw Error('Invalid endpoint or type for argument \"endpoint\". Usage i.e. ImageDetectionService.endpoints.HUMANS')
