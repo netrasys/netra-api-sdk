@@ -37,7 +37,7 @@ class ImageDetectionService extends AsyncApiBase{
 		 * @param {string} image_url - a valid url of a public image
 		 * @param {string} endpoint - classification model type. Object from ImageDetectionService.endpoints
 		 * @param {string=} callback_url - callback url, will override ImageDetectionService.defaultCallbackUrl
-		 * @param {object=} threshold - detection threshold, an integer between 0 and 100, if not specified the default for the model type will be used
+		 * @param {number=} threshold - detection threshold, an integer between 0 and 100, if not specified the default for the model type will be used
 		 * @param {object=} query_params - data that will be appended to the query params of the callback url
 		 * @param {object=} metadata - data that will be added to a property called "metadata" in the callback JSON
 		 * @returns {promise}
