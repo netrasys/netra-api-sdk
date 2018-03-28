@@ -46,7 +46,7 @@ class ImageDetectionService extends AsyncApiBase{
 		 * .then(data => console.log(data))
 		 * .catch(error => console.log(error))
 		 */
-		async processImage(image_url, endpoint, callback_url=this.defaultCallbackUrl, threshold=null, query_params={}, metadata={}) {
+		async processImage(image_url, endpoint, callback_url=this.defaultCallbackUrl, threshold=null, query_params={}, metadata={}, headers={}) {
 			try {
 				assert(image_url)
 				assert(endpoint)
@@ -70,7 +70,7 @@ class ImageDetectionService extends AsyncApiBase{
 					if (threshold !== null)
 						body['threshold'] = threshold;
 
-					return await super.makeRequest(url,body)
+					return await super.makeRequest(url,body,headers);
 				}else{
 					throw Error('Invalid endpoint or type for argument \"endpoint\". Usage i.e. ImageDetectionService.endpoints.HUMANS')
 				}

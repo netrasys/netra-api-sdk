@@ -10,15 +10,21 @@ class AsyncApiBase {
 		this.contentType = "application/json";
 	}
 
-	async makeRequest(url,body,method='POST'){
+	async makeRequest(url,body,headers={},method='POST'){
+
+		var defaultHeaders = {
+			'Ocp-Apim-Subscription-Key': this.apiKey,
+			'Content-Type': this.contentType
+		};
+
+		//combine default headers + custom
+		Object.assign(headers, defaultHeaders)
+
 		try {
 			const response = await fetch(url,
 				{
 					method: method,
-					headers: {
-						'Ocp-Apim-Subscription-Key': this.apiKey,
-						'Content-Type':'application/json'
-					},
+					headers: headers,
 					body:JSON.stringify(body),
 					agent: pool
 				});
